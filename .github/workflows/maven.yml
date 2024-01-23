@@ -27,15 +27,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Setup MySQL
-      uses: mirromutth/mysql-action@v1.1
-      with:
-        host port: ${{secrets.DB_PORT}}
-        mysql version: '8.0'
-        mysql database: ${{secrets.DB_NAME}}
-        mysql root password: ${{ secrets.DATABASE_PASSWORD }}
-        mysql user: ${{secrets.DATABASE_USERNAME}}
-        mysql password: ${{ secrets.DATABASE_PASSWORD }}
     - name: Build with Maven
       env:
         DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
