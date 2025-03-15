@@ -9,6 +9,7 @@ import java.util.List;
 public interface UserService {
 	UserResponseDto createUser(UserRequestDto userRequestDto);
 	UserResponseDto findUserById(Long userId);
+	UserResponseDto findByEmail(String email);
 	List<UserResponseDto> findAllUsers();
 	UserResponseDto updateUser(UserRequestDto user, Long userId);
 	void deleteUser(Long userId);

@@ -37,6 +37,11 @@ public class UserService implements com.startupsync.com.userservice.service.inte
 		return this.modelMapper.map(user, UserResponseDto.class);
 	}
 	@Override
+	public UserResponseDto findByEmail(String userId) {
+		User user = userRepository.findByEmail(userId);
+		return this.modelMapper.map(user, UserResponseDto.class);
+	}
+	@Override
 	public List<UserResponseDto> findAllUsers() {
 		List<UserResponseDto> allUsers = userRepository.findAll().stream().map((user -> this.modelMapper.map(user, UserResponseDto.class))).collect(Collectors.toList());
 		return allUsers;
