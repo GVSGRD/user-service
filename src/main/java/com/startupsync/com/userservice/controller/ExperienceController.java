@@ -14,7 +14,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/experience")
-@CrossOrigin("http://localhost:3000")
 public class ExperienceController {
 
 	@Autowired

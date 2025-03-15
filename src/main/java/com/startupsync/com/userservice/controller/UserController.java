@@ -15,7 +15,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:3000")
 public class UserController {
 
 	@Autowired
@@ -31,6 +30,12 @@ public class UserController {
 	@GetMapping("/{userId}")
 	public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long userId) {
 		UserResponseDto resp = userService.findUserById(userId);
+		return new ResponseEntity<UserResponseDto>(resp, HttpStatus.OK);
+	}
+
+	@GetMapping("/email/{email}")
+	public ResponseEntity<UserResponseDto> findByEmail(@PathVariable String email) {
+		UserResponseDto resp = userService.findByEmail(email);
 		return new ResponseEntity<UserResponseDto>(resp, HttpStatus.OK);
 	}
 
