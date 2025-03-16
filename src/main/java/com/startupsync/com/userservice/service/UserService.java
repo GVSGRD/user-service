@@ -47,25 +47,26 @@ public class UserService implements com.startupsync.com.userservice.service.inte
 		return allUsers;
 	}
 	@Override
-	public UserResponseDto updateUser(UserRequestDto userRequestDto, Long userId) {
-		User user = this.userRepository.findById(userId).orElse(null);
-		User updatedUser = user
-				.builder()
-				.id(user.getId())
-				.name(userRequestDto.getName())
-				.userName(userRequestDto.getUserName())
-				.password(userRequestDto.getPassword())
-				.email(userRequestDto.getEmail())
-				.designation(userRequestDto.getDesignation())
-				.bio(userRequestDto.getBio())
-				.profileImageUrl(userRequestDto.getProfileImageUrl())
-				.location(userRequestDto.getLocation())
-				.github(userRequestDto.getGithub())
-				.linkedin(userRequestDto.getLinkedin())
-				.createdAt(user.getCreatedAt())
-				.updatedAt(new Date())
-				.build();
-		return this.modelMapper.map(updatedUser, UserResponseDto.class);
+	public User updateUser(User user) {
+		return userRepository.save(user);
+		// User user = this.userRepository.findById(userId).orElse(null);
+		// User updatedUser = user
+		// 		.builder()
+		// 		.id(user.getId())
+		// 		.name(userRequestDto.getName())
+		// 		.userName(userRequestDto.getUserName())
+		// 		.password(userRequestDto.getPassword())
+		// 		.email(userRequestDto.getEmail())
+		// 		.designation(userRequestDto.getDesignation())
+		// 		.bio(userRequestDto.getBio())
+		// 		.profileImageUrl(userRequestDto.getProfileImageUrl())
+		// 		.location(userRequestDto.getLocation())
+		// 		.github(userRequestDto.getGithub())
+		// 		.linkedin(userRequestDto.getLinkedin())
+		// 		.createdAt(user.getCreatedAt())
+		// 		.updatedAt(new Date())
+		// 		.build();
+		// return this.modelMapper.map(updatedUser, UserResponseDto.class);
 	}
 	@Override
 	public void deleteUser(Long userId) {
