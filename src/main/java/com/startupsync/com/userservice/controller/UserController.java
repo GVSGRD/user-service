@@ -4,6 +4,7 @@ package com.startupsync.com.userservice.controller;
 
 import com.startupsync.com.userservice.payload.UserRequestDto;
 import com.startupsync.com.userservice.payload.UserResponseDto;
+import com.startupsync.com.userservice.entity.User;
 import com.startupsync.com.userservice.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,10 +46,10 @@ public class UserController {
 		return new ResponseEntity<List<UserResponseDto>>(resp, HttpStatus.OK);
 	}
 
-	@PutMapping("/update/{userId}")
-	public ResponseEntity<UserResponseDto> updateUser(@RequestBody UserRequestDto user, @PathVariable Long userId) {
-		UserResponseDto resp = userService.updateUser(user, userId);
-		return new ResponseEntity<UserResponseDto>(resp, HttpStatus.OK);
+	@PutMapping("/update")
+	public ResponseEntity<User> updateUser(@RequestBody User user) {
+		User resp = userService.updateUser(user);
+		return new ResponseEntity<User>(resp, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{userId}")

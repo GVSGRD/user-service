@@ -14,7 +14,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/education")
-@CrossOrigin("http://localhost:3000")
 public class EducationController {
 
 	@Autowired
